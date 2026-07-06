@@ -1,0 +1,196 @@
+---
+// Bloque de meta de donación (§6.5): panel rojo con barra de progreso + panel blanco con CTA.
+const raised = '₡4.620.000';
+const goal = '₡6.000.000';
+const pct = 77;
+const donantes = 312;
+---
+
+<section class="contenedor meta-seccion">
+  <div class="meta">
+    <div class="meta-rojo">
+      <span class="meta-badge">Campaña de junio</span>
+      <h2 class="meta-h2">3.000 castraciones para frenar el abandono</h2>
+      <p class="meta-p">
+        Cada castración evita decenas de nacimientos en la calle. Ayúdanos a alcanzar la meta de este
+        mes.
+      </p>
+      <div class="meta-cifras">
+        <span class="meta-raised">{raised}</span>
+        <span class="meta-goal">de {goal}</span>
+      </div>
+      <div
+        class="meta-barra"
+        role="progressbar"
+        aria-valuenow={pct}
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-label="Progreso de la meta de donación"
+      >
+        <div class="meta-barra-fill" style={`width:${pct}%`}></div>
+      </div>
+      <div class="meta-pie">
+        <span><strong>{pct}%</strong> alcanzado</span>
+        <span><strong>{donantes}</strong> donantes este mes</span>
+      </div>
+    </div>
+
+    <div class="meta-blanco">
+      <h3 class="meta-h3">Tu aporte se convierte en vidas salvadas</h3>
+      <p class="meta-blanco-p">Elegí un monto y sumate hoy. Cada colón llega directo al programa.</p>
+      <div class="meta-aportes">
+        <div class="meta-aporte">
+          <span class="meta-monto">₡5k</span>
+          <span>Cubre vacunas para 5 animales rescatados.</span>
+        </div>
+        <div class="meta-aporte">
+          <span class="meta-monto">₡15k</span>
+          <span>Financia una castración completa.</span>
+        </div>
+      </div>
+      <a href="/donar" class="btn-donar meta-cta">
+        Quiero donar
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.3 8.5 1.7 5 5 5c2 0 3.2 1.2 4 2.3C9.8 6.2 11 5 13 5c3.3 0 4.7 3.5 3 6.8C19.5 16.4 12 21 12 21z"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .meta-seccion {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+  .meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.5);
+  }
+  .meta-rojo {
+    background: var(--rojo);
+    color: #fff;
+    padding: 48px 44px;
+  }
+  .meta-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.18);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 6px 13px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .meta-h2 {
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.8px;
+    margin: 0 0 14px;
+  }
+  .meta-p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffe0e0;
+    margin: 0 0 30px;
+    max-width: 420px;
+  }
+  .meta-cifras {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
+  .meta-raised {
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: 30px;
+  }
+  .meta-goal {
+    font-size: 14px;
+    color: #ffd4d4;
+  }
+  .meta-barra {
+    height: 14px;
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .meta-barra-fill {
+    height: 100%;
+    background: #fff;
+    border-radius: 999px;
+    transition: width 1s ease-out;
+  }
+  .meta-pie {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 13.5px;
+    color: #ffd4d4;
+  }
+  .meta-pie strong {
+    color: #fff;
+  }
+
+  .meta-blanco {
+    background: var(--blanco);
+    padding: 48px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .meta-h3 {
+    font-weight: 800;
+    font-size: 23px;
+    margin: 0 0 8px;
+    color: var(--tinta);
+  }
+  .meta-blanco-p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--texto-3);
+    margin: 0 0 24px;
+  }
+  .meta-aportes {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .meta-aporte {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    font-size: 15px;
+    color: #3a3633;
+  }
+  .meta-monto {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: var(--rojo-suave);
+    color: var(--rojo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .meta-cta {
+    margin-top: 28px;
+    font-size: 17px;
+    padding: 16px;
+    border-radius: 13px;
+    box-shadow: none;
+  }
+
+  @media (max-width: 900px) {
+    .meta {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

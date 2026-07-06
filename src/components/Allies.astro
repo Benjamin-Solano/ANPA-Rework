@@ -1,0 +1,70 @@
+---
+import { aliados } from '../data/aliados.ts';
+---
+
+<section id="aliados" class="contenedor aliados-seccion">
+  <p class="aliados-titulo">Con el respaldo de aliados que confían en nosotros</p>
+  <div class="aliados-lista">
+    {
+      aliados.map((a) => (
+        <div class="aliado">
+          <span class="aliado-marca" style={`background:${a.color}`}>{a.mark}</span>
+          <span class="aliado-nombre">{a.name}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .aliados-seccion {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+  .aliados-titulo {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--tenue-2);
+    margin: 0 0 28px;
+  }
+  .aliados-lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+  }
+  .aliado {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    padding: 16px 24px;
+    min-width: 160px;
+    justify-content: center;
+  }
+  .aliado-marca {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: 14px;
+  }
+  .aliado-nombre {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 16px;
+    color: #4a443d;
+    letter-spacing: -0.3px;
+  }
+</style>

@@ -1,0 +1,276 @@
+---
+import Logo from './Logo.astro';
+import { programas } from '../data/programas.ts';
+
+interface Props {
+  /** Página activa para resaltar el enlace (§6.1). */
+  active?: 'inicio' | 'programas' | 'donar' | '';
+}
+const { active = '' } = Astro.props;
+
+const redes = [
+  {
+    label: 'Facebook',
+    href: '#',
+    icon: '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3.5H14V3.8c0-1 .3-1.7 1.7-1.7H17.6V-.9C17.3-.9 16-.9 14.6-.9c-2.9 0-4.6 1.7-4.6 4.9V5.5H7V9h3v9.5h4z" transform="translate(0 2)"/></svg>',
+  },
+  {
+    label: 'Instagram',
+    href: '#',
+    icon: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
+  },
+  {
+    label: 'YouTube',
+    href: '#',
+    icon: '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22.4 12 31 31 0 0 0 22 8.2zM10 15V9l5.2 3z"/></svg>',
+  },
+];
+
+const submenuDesc: Record<string, string> = {
+  castra: 'Castración masiva y preventiva',
+  educa: 'Educación y sensibilización',
+  focaba: 'Foro centroamericano de bienestar',
+};
+---
+
+<header class="nav" role="banner">
+  <div class="nav-inner contenedor">
+    <a href="/" aria-label="ANPA — inicio">
+      <Logo size={42} variant="oscuro" />
+    </a>
+
+    <nav class="nav-desktop nav-links" aria-label="Principal">
+      <a href="/" class:list={['nav-link', { activo: active === 'inicio' }]} aria-current={active === 'inicio' ? 'page' : undefined}>Inicio</a>
+
+      <div class="tiene-submenu">
+        <a href="/programas" class:list={['nav-link', { activo: active === 'programas' }]} aria-haspopup="true">
+          Programas
+          <svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+        </a>
+        <div class="submenu" role="menu">
+          {
+            programas.map((p) => (
+              <a href={`/programas#${p.slug}`} role="menuitem">
+                <span class="submenu-titulo">{p.title}</span>
+                <span class="submenu-desc">{submenuDesc[p.slug]}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <a href="/#impacto" class="nav-link">Impacto</a>
+      <a href="/#noticias" class="nav-link">Noticias</a>
+      <a href="/#aliados" class="nav-link">Aliados</a>
+    </nav>
+
+    <div class="nav-desktop nav-derecha">
+      <div class="redes" aria-label="Redes sociales">
+        {redes.map((r) => <a href={r.href} class="red" aria-label={r.label} set:html={r.icon} />)}
+      </div>
+      <a href="/donar" class="btn-donar nav-donar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.3 8.5 1.7 5 5 5c2 0 3.2 1.2 4 2.3C9.8 6.2 11 5 13 5c3.3 0 4.7 3.5 3 6.8C19.5 16.4 12 21 12 21z"></path></svg>
+        Donar
+      </a>
+    </div>
+
+    <button class="nav-mobile-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile-panel">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+  </div>
+
+  <div class="nav-mobile-panel" id="nav-mobile-panel" hidden>
+    <a href="/" class="mLink">Inicio</a>
+    <a href="/programas" class="mLink">Programas</a>
+    <a href="/#impacto" class="mLink">Impacto</a>
+    <a href="/#noticias" class="mLink">Noticias</a>
+    <a href="/#aliados" class="mLink">Aliados</a>
+    <a href="/donar" class="mLink-donar">Donar ahora</a>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.nav-mobile-btn');
+  const panel = document.querySelector<HTMLElement>('#nav-mobile-panel');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    if (panel) panel.hidden = open;
+  });
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--blanco);
+    border-bottom: 1px solid var(--borde-nav);
+    box-shadow: var(--sombra-nav);
+    font-family: var(--font-body);
+  }
+  .nav-inner {
+    height: 74px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+  }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--texto-2);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 9px 13px;
+    border-radius: 9px;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+  }
+  .nav-link:hover {
+    background: #f7f2ec;
+  }
+  .nav-link.activo {
+    color: var(--rojo);
+    background: var(--rojo-suave);
+  }
+
+  /* Submenú (desktop): hover + focus-within, máximo 2 niveles (§6.1) */
+  .tiene-submenu {
+    position: relative;
+  }
+  .chevron {
+    margin-left: 3px;
+    transition: transform 0.2s;
+  }
+  .submenu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    background: var(--blanco);
+    border: 1px solid var(--borde-nav);
+    border-radius: 14px;
+    box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.4);
+    padding: 8px;
+    min-width: 248px;
+    display: none;
+  }
+  .tiene-submenu:hover .submenu,
+  .tiene-submenu:focus-within .submenu {
+    display: block;
+  }
+  .tiene-submenu:hover .chevron,
+  .tiene-submenu:focus-within .chevron {
+    transform: rotate(180deg);
+  }
+  .submenu a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 9px;
+    text-decoration: none;
+    transition: background 0.12s;
+  }
+  .submenu a:hover {
+    background: #f7f2ec;
+  }
+  .submenu-titulo {
+    font-weight: 700;
+    color: var(--tinta);
+  }
+  .submenu-desc {
+    display: block;
+    font-size: 12px;
+    color: var(--tenue);
+  }
+
+  .nav-derecha {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .redes {
+    display: flex;
+    gap: 7px;
+  }
+  .red {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3ede6;
+    color: var(--texto-3);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .red:hover {
+    background: var(--rojo);
+    color: #fff;
+  }
+  .nav-donar {
+    font-size: 15px;
+    padding: 11px 20px;
+    box-shadow: 0 8px 18px -8px rgba(31, 138, 91, 0.7);
+  }
+
+  .nav-mobile-btn {
+    display: none;
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--tinta);
+  }
+
+  .nav-mobile-panel {
+    border-top: 1px solid var(--borde-nav);
+    background: var(--blanco);
+    padding: 12px var(--pad-lat) 22px;
+  }
+  .mLink {
+    display: block;
+    padding: 13px 4px;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--tinta);
+    text-decoration: none;
+    border-bottom: 1px solid #f1ece5;
+  }
+  .mLink-donar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--verde);
+    color: #fff;
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+
+  /* Navbar móvil (§5.1: ≤900px) */
+  @media (max-width: 900px) {
+    .nav-desktop {
+      display: none !important;
+    }
+    .nav-mobile-btn {
+      display: block;
+    }
+  }
+  @media (min-width: 901px) {
+    .nav-mobile-panel {
+      display: none;
+    }
+  }
+</style>

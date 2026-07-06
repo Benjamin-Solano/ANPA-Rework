@@ -1,0 +1,53 @@
+/* ============================================================================
+   Design tokens — ANPA Costa Rica
+   Fuente: Documentación/Manual Tecnico Diseño.md (§3 Color, §4 Tipografía, §5 Layout)
+   El verde se reserva EXCLUSIVAMENTE para la conversión (Donar) y éxito (§3.4).
+   ============================================================================ */
+:root {
+  /* Marca / narrativa */
+  --rojo: #d4232b;
+  --rojo-hover: #a81a20;
+  --rojo-suave: #fbeceb;
+
+  /* Acción / conversión (solo Donar + confirmaciones) */
+  --verde: #1f8a5b;
+  --verde-hover: #166b46;
+  --verde-suave: #eef6f1;
+
+  /* Texto */
+  --tinta: #1d1b1a;
+  --texto-2: #544f48;
+  --texto-3: #6b635b;
+  --tenue: #8a827a;
+  --tenue-2: #9a928a;
+
+  /* Fondos y neutros */
+  --crema: #faf6f1;
+  --blanco: #ffffff;
+  --borde: #ece4da;
+  --borde-2: #efe7dd;
+  --borde-nav: #ece5dd;
+  --img-fallback: #e7ddd2;
+
+  /* Footer (tinta) */
+  --tinta-footer: #1a1816;
+  --footer-texto: #cfc9c2;
+  --footer-texto-2: #a8a199;
+  --footer-tenue: #857d74;
+  --footer-borde: #2e2a26;
+  --footer-chip: #2a2622;
+  --footer-campo: #262320;
+  --footer-campo-borde: #38332e;
+
+  /* Tipografía */
+  --font-head: 'Archivo', system-ui, sans-serif;
+  --font-body: 'Public Sans', system-ui, sans-serif;
+
+  /* Layout */
+  --max: 1200px;
+  --pad-lat: 24px;
+
+  /* Sombras (§5: suaves, baja opacidad) */
+  --sombra-tarjeta: 0 14px 36px -28px rgba(0, 0, 0, 0.35);
+  --sombra-nav: 0 1px 0 rgba(0, 0, 0, 0.02), 0 6px 24px -18px rgba(0, 0, 0, 0.25);
+}

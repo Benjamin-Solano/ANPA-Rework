@@ -1,0 +1,69 @@
+---
+// Logo de marca (disco rojo con huella + wordmark). Reutilizado en Navbar y Footer.
+interface Props {
+  /** Tamaño del disco en px (§2.1: mín 40 navbar / 44 footer). */
+  size?: number;
+  /** Esquema de color del texto: 'oscuro' (navbar) o 'claro' (footer). */
+  variant?: 'oscuro' | 'claro';
+}
+const { size = 42, variant = 'oscuro' } = Astro.props;
+const svgSize = Math.round(size * 0.52);
+const wordColor = variant === 'claro' ? '#fff' : 'var(--tinta)';
+const subColor = variant === 'claro' ? '#8d857c' : 'var(--tenue)';
+---
+
+<span class="logo" style={`--disco:${size}px`}>
+  <span class="disco" aria-hidden="true">
+    <svg width={svgSize} height={svgSize} viewBox="0 0 24 24" fill="#fff">
+      <circle cx="6" cy="9" r="2"></circle>
+      <circle cx="11" cy="6" r="2"></circle>
+      <circle cx="17" cy="8" r="2"></circle>
+      <circle cx="20" cy="13" r="2"></circle>
+      <path
+        d="M12 12c-3 0-5 2.4-5 4.6 0 1.7 1.3 2.4 2.6 2.4 1 0 1.6-.5 2.4-.5s1.4.5 2.4.5c1.3 0 2.6-.7 2.6-2.4C17 14.4 15 12 12 12z"
+      ></path>
+    </svg>
+  </span>
+  <span class="wordmark">
+    <span class="marca" style={`color:${wordColor}`}>ANPA</span>
+    <span class="bajada" style={`color:${subColor}`}>Protección Animal · CR</span>
+  </span>
+</span>
+
+<style>
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .disco {
+    width: var(--disco);
+    height: var(--disco);
+    border-radius: 50%;
+    background: var(--rojo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .marca {
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: 23px;
+    letter-spacing: -0.5px;
+  }
+  .bajada {
+    font-size: 9.5px;
+    letter-spacing: 0.4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+</style>

@@ -1,0 +1,68 @@
+.cf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.cf-campo {
+  background: var(--footer-campo);
+  border: 1px solid var(--footer-campo-borde);
+  border-radius: 11px;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.cf-campo::placeholder {
+  color: #8a827a;
+}
+.cf-campo:focus {
+  border-color: var(--verde);
+}
+
+.cf-textarea {
+  resize: vertical;
+  min-height: 84px;
+}
+
+.cf-enviar {
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 13px;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cf-enviar:hover {
+  background: var(--verde-hover);
+}
+
+.cf-exito {
+  background: rgba(31, 138, 91, 0.15);
+  border: 1px solid rgba(31, 138, 91, 0.5);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.cf-exito svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.cf-exito-titulo {
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+}
+.cf-exito-texto {
+  color: var(--footer-texto-2);
+  font-size: 13.5px;
+  margin-top: 3px;
+}

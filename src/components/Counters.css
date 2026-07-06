@@ -1,0 +1,47 @@
+.contadores {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.contador-card {
+  background: var(--blanco);
+  border: 1px solid var(--borde-2);
+  border-radius: 18px;
+  padding: 30px 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px -24px rgba(0, 0, 0, 0.3);
+}
+
+.contador-icono {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contador-cifra {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 40px;
+  letter-spacing: -1px;
+  color: var(--tinta);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.contador-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto-3);
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .contadores {
+    grid-template-columns: 1fr 1fr;
+  }
+}

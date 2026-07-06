@@ -1,0 +1,112 @@
+@import './tokens.css';
+
+/* ============================================================================
+   Reset mínimo + base
+   ============================================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Compensa el navbar sticky (74px) al saltar a anclas #impacto, #noticias, etc. */
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--crema);
+  color: var(--tinta);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  margin: 0;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Foco visible por accesibilidad (§8) */
+:focus-visible {
+  outline: 2px solid var(--verde);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   Utilidades compartidas
+   ============================================================================ */
+.contenedor {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--pad-lat);
+  padding-right: var(--pad-lat);
+}
+
+.etiqueta-seccion {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+/* Enlace de acción con flecha (§7) */
+.enlace-accion {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--rojo);
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+/* Botón píldora primario (Donar) */
+.btn-donar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: var(--verde);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 14px 30px -12px rgba(31, 138, 91, 0.8);
+  transition: transform 0.15s, background 0.15s;
+}
+.btn-donar:hover {
+  background: var(--verde-hover);
+  transform: translateY(-1px);
+}
+
+/* ============================================================================
+   Breakpoints globales (§5.1)  — 900px móvil general, 820px footer
+   Las media queries específicas de cada componente viven en su <style> scoped.
+   ============================================================================ */
+@media (max-width: 900px) {
+  :root {
+    --pad-lat: 22px;
+  }
+}
