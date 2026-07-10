@@ -4,7 +4,7 @@ import { programas } from '../data/programas.ts';
 
 interface Props {
   /** Página activa para resaltar el enlace (§6.1). */
-  active?: 'inicio' | 'programas' | 'donar' | '';
+  active?: 'inicio' | 'programas' | 'focaba' | 'comunidad' | 'donar' | '';
 }
 const { active = '' } = Astro.props;
 
@@ -29,8 +29,12 @@ const redes = [
 const submenuDesc: Record<string, string> = {
   castra: 'Castración masiva y preventiva',
   educa: 'Educación y sensibilización',
-  focaba: 'Foro centroamericano de bienestar',
 };
+
+const comunidadSubmenu = [
+  { slug: 'adopciones', title: 'Adopciones', desc: 'Refugios verificados y mascotas disponibles' },
+  { slug: 'busqueda', title: 'Mascotas perdidas', desc: 'Búsqueda con IA y tablero comunitario' },
+];
 ---
 
 <header class="nav" role="banner">
@@ -59,9 +63,24 @@ const submenuDesc: Record<string, string> = {
         </div>
       </div>
 
-      <a href="/#impacto" class="nav-link">Impacto</a>
-      <a href="/#noticias" class="nav-link">Noticias</a>
-      <a href="/#aliados" class="nav-link">Aliados</a>
+      <a href="/focaba" class:list={['nav-link', { activo: active === 'focaba' }]} aria-current={active === 'focaba' ? 'page' : undefined}>FOCABA</a>
+
+      <div class="tiene-submenu">
+        <a href="/comunidad" class:list={['nav-link', { activo: active === 'comunidad' }]} aria-haspopup="true">
+          Comunidad
+          <svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+        </a>
+        <div class="submenu" role="menu">
+          {
+            comunidadSubmenu.map((c) => (
+              <a href={`/comunidad#${c.slug}`} role="menuitem">
+                <span class="submenu-titulo">{c.title}</span>
+                <span class="submenu-desc">{c.desc}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
     </nav>
 
     <div class="nav-desktop nav-derecha">
@@ -82,9 +101,9 @@ const submenuDesc: Record<string, string> = {
   <div class="nav-mobile-panel" id="nav-mobile-panel" hidden>
     <a href="/" class="mLink">Inicio</a>
     <a href="/programas" class="mLink">Programas</a>
-    <a href="/#impacto" class="mLink">Impacto</a>
+    <a href="/focaba" class="mLink">FOCABA</a>
+    <a href="/comunidad" class="mLink">Comunidad</a>
     <a href="/#noticias" class="mLink">Noticias</a>
-    <a href="/#aliados" class="mLink">Aliados</a>
     <a href="/donar" class="mLink-donar">Donar ahora</a>
   </div>
 </header>

@@ -2,12 +2,14 @@
 import type { Programa } from '../data/programas.ts';
 interface Props {
   programa: Programa;
+  /** Sobrescribe el destino por defecto (/programas#slug) — usado por la tarjeta de FOCABA. */
+  href?: string;
 }
-const { programa: p } = Astro.props;
+const { programa: p, href = `/programas#${p.slug}` } = Astro.props;
 const bg = p.tone === 'rojo' ? 'var(--rojo)' : 'var(--verde)';
 ---
 
-<a class="prog-card" href={`/programas#${p.slug}`}>
+<a class="prog-card" href={href}>
   <div class="prog-img-wrap">
     <img class="prog-img" src={p.img} alt={p.alt} width="600" height="400" loading="lazy" />
     <span class="prog-icono" aria-hidden="true" style={`background:${bg}`} set:html={p.icon}></span>

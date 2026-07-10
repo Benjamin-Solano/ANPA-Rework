@@ -2,174 +2,541 @@
 import Base from '../layouts/Base.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import { casoActivo, transparencia, metodos, montosRecurrentes, merch } from '../data/donaciones.ts';
 
-// PLACEHOLDER: montos sugeridos. Aún sin pasarela de pago real (§ pendiente producción).
-const montos = [
-  { monto: '₡5.000', detalle: 'Cubre vacunas para 5 animales rescatados.' },
-  { monto: '₡15.000', detalle: 'Financia una castración completa.' },
-  { monto: '₡30.000', detalle: 'Sostiene un taller de educación en una escuela.' },
-];
+const pct = Math.round((casoActivo.recaudado / casoActivo.meta) * 100);
+// en-US da separador de coma (₡320,000), consistente con Counters.tsx y con el patrón del diseño aprobado.
+const fmt = (n: number) => `₡${n.toLocaleString('en-US')}`;
 ---
 
 <Base
   title="Donar"
-  description="Sumate a ANPA Costa Rica. Tu aporte se convierte en castraciones, rescates y educación. Cada colón llega directo a los programas de bienestar animal."
+  description="Doná a ANPA Costa Rica por SINPE, PayPal, transferencia o tarjeta, con total transparencia sobre a dónde va cada colón. Donación única o recurrente. También tienda solidaria ANPA."
 >
   <Navbar active="donar" />
 
-  <section class="donar">
-    <div class="contenedor donar-grid">
-      <div>
-        <span class="etiqueta-seccion c-verde">Sumate hoy</span>
-        <h1 class="donar-h1">Tu aporte se convierte en vidas salvadas</h1>
-        <p class="donar-p">
-          Cada colón llega directo a los programas de castración, rescate y educación. Elegí un monto y
-          ayudanos a construir un país donde ningún animal quede atrás.
-        </p>
-        <ul class="donar-lista">
-          <li>Organización declarada de utilidad pública desde 2019.</li>
-          <li>46 años de trayectoria en bienestar animal.</li>
-          <li>Presencia en 56 gobiernos locales de todo el país.</li>
-        </ul>
-      </div>
-
-      <div class="donar-panel">
-        <h2 class="donar-panel-h2">Elegí tu aporte</h2>
-        <div class="donar-montos">
-          {
-            montos.map((m) => (
-              <button class="donar-monto" type="button">
-                <span class="donar-monto-cifra">{m.monto}</span>
-                <span class="donar-monto-detalle">{m.detalle}</span>
-              </button>
-            ))
-          }
-        </div>
-        <a href="#" class="btn-donar donar-cta">
-          Continuar con la donación
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.3 8.5 1.7 5 5 5c2 0 3.2 1.2 4 2.3C9.8 6.2 11 5 13 5c3.3 0 4.7 3.5 3 6.8C19.5 16.4 12 21 12 21z"></path></svg>
-        </a>
-        <p class="donar-nota">Integración con pasarela de pago próximamente.</p>
+  <section class="cabecera">
+    <div class="contenedor cabecera-inner">
+      <h1 class="cabecera-h1">Donaciones</h1>
+      <p class="cabecera-p">Cada colón cuenta, y podés ver exactamente a dónde va.</p>
+      <div class="tabs" role="tablist" aria-label="Donaciones">
+        <button type="button" class="tab" data-tab="donaciones" role="tab" aria-selected="true">Donaciones</button>
+        <button type="button" class="tab" data-tab="merch" role="tab" aria-selected="false">Merch</button>
       </div>
     </div>
   </section>
 
+  <!-- ============ DONACIONES ============ -->
+  <div id="donaciones" class="panel contenedor seccion" role="tabpanel">
+    <div class="meta">
+      <div class="meta-rojo">
+        <span class="meta-badge">{casoActivo.badge}</span>
+        <h2 class="meta-h2">{casoActivo.titulo}</h2>
+        <p class="meta-p">{casoActivo.desc}</p>
+        <div class="meta-cifras">
+          <span class="meta-raised">{fmt(casoActivo.recaudado)}</span>
+          <span class="meta-goal">de {fmt(casoActivo.meta)}</span>
+        </div>
+        <div class="meta-barra" role="progressbar" aria-valuenow={pct} aria-valuemin="0" aria-valuemax="100" aria-label="Progreso de la meta de donación">
+          <div class="meta-barra-fill" style={`width:${pct}%`}></div>
+        </div>
+        <div class="meta-pie">
+          <span>{pct}% alcanzado</span>
+          <span>{casoActivo.faltan}</span>
+        </div>
+      </div>
+      <div class="meta-blanco">
+        <h3 class="meta-h3">Tu aporte se convierte en vidas salvadas</h3>
+        <p class="meta-blanco-p">Elegí un monto y sumate hoy. Cada colón llega directo al programa.</p>
+        <div class="meta-aportes">
+          <div class="meta-aporte">
+            <span class="meta-monto">₡5k</span>
+            <span>Cubre vacunas para 5 animales rescatados.</span>
+          </div>
+          <div class="meta-aporte">
+            <span class="meta-monto">₡15k</span>
+            <span>Financia una castración completa.</span>
+          </div>
+        </div>
+        <button type="button" class="btn-donar meta-cta">Quiero donar ♥</button>
+      </div>
+    </div>
+
+    <h2 class="h2">Transparencia general</h2>
+    <p class="sub">Cómo se han usado los fondos este año.</p>
+    <div class="transparencia-grid">
+      {
+        transparencia.map((t) => (
+          <div class="transparencia-card">
+            <div class="transparencia-valor">{t.value}</div>
+            <div class="transparencia-label">{t.label}</div>
+          </div>
+        ))
+      }
+    </div>
+
+    <h2 class="h2">Elegí cómo donar</h2>
+    <div class="metodos-grid">
+      {
+        metodos.map((m) => (
+          <div class="metodo-card">
+            <div class="metodo-icono">{m.short}</div>
+            <div class="metodo-nombre">{m.name}</div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="recurrente-caja">
+      <div>
+        <div class="recurrente-titulo">Donación recurrente</div>
+        <div class="recurrente-desc">Suscribite con un monto mensual y ayudá de forma constante.</div>
+      </div>
+      <button type="button" class="switch" id="recurrente-switch" aria-pressed="false" aria-label="Activar donación recurrente">
+        <span class="switch-knob"></span>
+      </button>
+    </div>
+    <div class="recurrente-montos" id="recurrente-montos" hidden>
+      {montosRecurrentes.map((m) => <div class="recurrente-monto">{m}</div>)}
+    </div>
+  </div>
+
+  <!-- ============ MERCH ============ -->
+  <div id="merch" class="panel contenedor seccion" role="tabpanel" hidden>
+    <h2 class="h2">Tienda ANPA</h2>
+    <p class="sub">100% de la ganancia se destina a los programas de ANPA.</p>
+    <div class="merch-grid">
+      {
+        merch.map((p) => (
+          <div class="merch-card">
+            <img class="merch-img" src={p.img} alt={p.name} width="400" height="300" loading="lazy" />
+            <div class="merch-cuerpo">
+              <div class="merch-nombre">{p.name}</div>
+              <div class="merch-fila">
+                <div class="merch-precio">{p.price}</div>
+                <button type="button" class="merch-agregar">Agregar</button>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
   <Footer />
 </Base>
 
-<style>
-  .c-verde {
-    color: var(--verde);
-  }
-  .donar {
-    padding: 72px 0 88px;
-  }
-  .donar-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: center;
-  }
-  .donar-h1 {
-    font-weight: 900;
-    font-size: 42px;
-    letter-spacing: -1px;
-    margin: 10px 0 18px;
-    line-height: 1.1;
-    color: var(--tinta);
-    text-wrap: balance;
-  }
-  .donar-p {
-    font-size: 17px;
-    line-height: 1.7;
-    color: var(--texto-2);
-    margin: 0 0 24px;
-  }
-  .donar-lista {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 15.5px;
-    color: #3a3633;
-  }
-  .donar-lista li {
-    padding-left: 26px;
-    position: relative;
-  }
-  .donar-lista li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--verde);
-    font-weight: 800;
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tab');
+  const panels: Record<string, HTMLElement | null> = {
+    donaciones: document.getElementById('donaciones'),
+    merch: document.getElementById('merch'),
+  };
+
+  function activate(name: string) {
+    if (!panels[name]) return;
+    tabs.forEach((t) => {
+      const active = t.dataset.tab === name;
+      t.classList.toggle('activo', active);
+      t.setAttribute('aria-selected', String(active));
+    });
+    Object.entries(panels).forEach(([key, el]) => {
+      if (el) el.hidden = key !== name;
+    });
   }
 
-  .donar-panel {
-    background: var(--blanco);
-    border: 1px solid var(--borde);
-    border-radius: 22px;
-    padding: 36px 32px;
-    box-shadow: var(--sombra-tarjeta);
+  tabs.forEach((t) => t.addEventListener('click', () => activate(t.dataset.tab!)));
+
+  const swtch = document.getElementById('recurrente-switch');
+  const montos = document.getElementById('recurrente-montos');
+  swtch?.addEventListener('click', () => {
+    const on = swtch.getAttribute('aria-pressed') === 'true';
+    swtch.setAttribute('aria-pressed', String(!on));
+    swtch.classList.toggle('on', !on);
+    if (montos) montos.hidden = on;
+  });
+</script>
+
+<style>
+  .cabecera {
+    background: linear-gradient(135deg, var(--rojo), #8e0e22);
+    padding: 56px 0 44px;
+    text-align: center;
   }
-  .donar-panel-h2 {
+  .cabecera-inner {
+    max-width: 700px;
+  }
+  .cabecera-h1 {
+    font-family: var(--font-head);
     font-weight: 800;
-    font-size: 22px;
-    margin: 0 0 20px;
-    color: var(--tinta);
+    font-size: 34px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin: 0 0 10px;
   }
-  .donar-montos {
+  .cabecera-p {
+    font-size: 15.5px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 26px;
+  }
+  .tabs {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    padding: 5px;
+  }
+  .tab {
+    padding: 9px 22px;
+    border-radius: 24px;
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: #fff;
+  }
+  .tab.activo {
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--rojo);
+  }
+
+  .seccion {
+    padding-top: 48px;
+    padding-bottom: 64px;
+  }
+  .h2 {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 23px;
+    letter-spacing: -0.3px;
+    color: var(--tinta);
+    margin: 0 0 6px;
+  }
+  .sub {
+    font-size: 14px;
+    color: var(--texto-3);
+    margin: 0 0 22px;
+  }
+
+  /* Meta de donación (caso activo) */
+  .meta {
+    border-radius: 26px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 26px 60px -24px rgba(0, 0, 0, 0.35);
+    margin-bottom: 56px;
+  }
+  .meta-rojo {
+    flex: 1.3;
+    min-width: 300px;
+    background: var(--rojo);
+    padding: 36px 34px;
+    color: #fff;
+  }
+  .meta-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.16);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .meta-h2 {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 23px;
+    margin: 0 0 10px;
+    line-height: 1.25;
+  }
+  .meta-p {
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.6;
+    margin: 0 0 22px;
+  }
+  .meta-cifras {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+  .meta-goal {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .meta-barra {
+    height: 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.28);
+    overflow: hidden;
+    margin: 14px 0 8px;
+  }
+  .meta-barra-fill {
+    height: 100%;
+    border-radius: 8px;
+    background: #fff;
+    transition: width 1s ease-out;
+  }
+  .meta-pie {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.82);
+  }
+  .meta-blanco {
+    flex: 1;
+    min-width: 280px;
+    background: var(--blanco);
+    padding: 36px 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+  }
+  .meta-h3 {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--tinta);
+    margin: 0;
+  }
+  .meta-blanco-p {
+    font-size: 13.5px;
+    color: var(--texto-3);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .meta-aportes {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 24px;
   }
-  .donar-monto {
+  .meta-aporte {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
-    text-align: left;
-    background: var(--crema);
-    border: 1px solid var(--borde);
-    border-radius: 14px;
-    padding: 16px 18px;
-    cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #4a423c;
   }
-  .donar-monto:hover {
-    border-color: var(--verde);
-    background: var(--verde-suave);
-  }
-  .donar-monto-cifra {
+  .meta-monto {
     font-family: var(--font-head);
     font-weight: 800;
-    font-size: 20px;
+    color: var(--rojo);
+    font-size: 14px;
+    background: var(--rojo-suave);
+    padding: 6px 12px;
+    border-radius: 9px;
+    flex-shrink: 0;
+  }
+  .meta-cta {
+    text-align: center;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Transparencia */
+  .transparencia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+    margin-bottom: 60px;
+  }
+  .transparencia-card {
+    border-radius: 18px;
+    padding: 24px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    box-shadow: var(--sombra-tarjeta);
+  }
+  .transparencia-valor {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 24px;
     color: var(--tinta);
   }
-  .donar-monto-detalle {
+  .transparencia-label {
+    font-size: 12.5px;
+    color: var(--tenue);
+    margin-top: 4px;
+  }
+
+  /* Métodos de pago */
+  .metodos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .metodo-card {
+    border-radius: 16px;
+    padding: 22px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    text-align: center;
+    cursor: pointer;
+    box-shadow: var(--sombra-tarjeta);
+    transition: transform 0.15s;
+  }
+  .metodo-card:hover {
+    transform: translateY(-3px);
+  }
+  .metodo-icono {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--rojo-suave);
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-weight: 800;
+    color: var(--rojo);
+    font-size: 13px;
+  }
+  .metodo-nombre {
+    font-weight: 700;
     font-size: 13.5px;
+    color: var(--tinta);
+  }
+
+  /* Donación recurrente */
+  .recurrente-caja {
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .recurrente-titulo {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--tinta);
+    margin-bottom: 4px;
+  }
+  .recurrente-desc {
+    font-size: 13px;
     color: var(--texto-3);
   }
-  .donar-cta {
-    width: 100%;
-    font-size: 17px;
-    padding: 16px;
-    border-radius: 13px;
-    box-shadow: none;
+  .switch {
+    width: 52px;
+    height: 30px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.15);
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    border: none;
+    transition: background 0.2s;
+    padding: 0;
   }
-  .donar-nota {
-    text-align: center;
-    font-size: 12.5px;
-    color: var(--tenue-2);
-    margin: 14px 0 0;
+  .switch.on {
+    background: var(--verde);
+  }
+  .switch-knob {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: left 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  .switch.on .switch-knob {
+    left: 25px;
+  }
+  .recurrente-montos {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 52px;
+  }
+  .recurrente-monto {
+    padding: 12px 22px;
+    border-radius: 24px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    box-shadow: 0 8px 20px -10px rgba(31, 138, 91, 0.35);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--verde);
+    cursor: pointer;
+  }
+
+  /* Merch */
+  .merch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .merch-card {
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    box-shadow: var(--sombra-tarjeta);
+  }
+  .merch-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    background: var(--img-fallback);
+  }
+  .merch-cuerpo {
+    padding: 18px;
+  }
+  .merch-nombre {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--tinta);
+    margin-bottom: 10px;
+  }
+  .merch-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .merch-precio {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--rojo);
+  }
+  .merch-agregar {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: var(--verde);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-body);
+  }
+  .merch-agregar:hover {
+    background: var(--verde-hover);
   }
 
   @media (max-width: 900px) {
-    .donar-grid {
-      grid-template-columns: 1fr;
+    .meta {
+      flex-direction: column;
     }
   }
 </style>

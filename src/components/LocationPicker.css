@@ -1,0 +1,107 @@
+.lp {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lp-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--texto-3);
+  letter-spacing: 0.3px;
+}
+
+.lp-mapa {
+  position: relative;
+  height: 190px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: repeating-linear-gradient(45deg, #dce9e2, #dce9e2 12px, #c9ddd2 12px, #c9ddd2 24px);
+  cursor: crosshair;
+}
+
+.lp-mapa-texto {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  color: #4a6b58;
+  pointer-events: none;
+  text-align: center;
+  padding: 16px;
+}
+
+.lp-pin {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  transition: left 0.2s, top 0.2s;
+  pointer-events: none;
+}
+
+.lp-pin-punta {
+  width: 22px;
+  height: 22px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--rojo);
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.lp-acciones {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.lp-gps {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--rojo);
+  background: none;
+  color: var(--rojo);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.lp-gps:hover {
+  background: var(--rojo-suave);
+}
+
+.lp-gps-punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 2px solid var(--rojo);
+  flex-shrink: 0;
+}
+
+.lp-buscando {
+  font-size: 12px;
+  color: var(--tenue);
+}
+
+.lp-mensaje {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.lp-mensaje-verde {
+  color: var(--verde);
+}
+.lp-mensaje-rojo {
+  color: var(--rojo);
+}
+.lp-mensaje-texto {
+  color: var(--texto-3);
+}
+.lp-mensaje-tenue {
+  color: var(--tenue);
+}

@@ -37,15 +37,4 @@ export const programas: Programa[] = [
     detalle:
       'Programas de educación y sensibilización en escuelas y comunidades de todo el país. Formamos en tenencia responsable, empatía y respeto por los animales, sembrando el cambio cultural desde la niñez.',
   },
-  {
-    slug: 'focaba',
-    title: 'FOCABA',
-    tone: 'rojo',
-    img: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=80',
-    alt: 'Encuentro regional de bienestar animal',
-    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>',
-    desc: 'Foro Centroamericano de Bienestar Animal: articulamos políticas y alianzas regionales.',
-    detalle:
-      'El Foro Centroamericano de Bienestar Animal articula políticas públicas, coordinación regional y alianzas entre organizaciones para elevar los estándares de bienestar animal en toda Centroamérica.',
-  },
 ];

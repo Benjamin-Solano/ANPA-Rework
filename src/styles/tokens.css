@@ -5,9 +5,9 @@
    ============================================================================ */
 :root {
   /* Marca / narrativa */
-  --rojo: #d4232b;
-  --rojo-hover: #a81a20;
-  --rojo-suave: #fbeceb;
+  --rojo: #c41230;
+  --rojo-hover: #9e0e26;
+  --rojo-suave: #fbebea;
 
   /* Acción / conversión (solo Donar + confirmaciones) */
   --verde: #1f8a5b;
