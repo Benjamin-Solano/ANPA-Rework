@@ -1,0 +1,136 @@
+.metaSeccion {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.5);
+}
+.metaRojo {
+  background: var(--rojo);
+  color: #fff;
+  padding: 48px 44px;
+}
+.metaBadge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 6px 13px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+.metaH2 {
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  margin: 0 0 14px;
+}
+.metaP {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ffe0e0;
+  margin: 0 0 30px;
+  max-width: 420px;
+}
+.metaCifras {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+.metaRaised {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 30px;
+}
+.metaGoal {
+  font-size: 14px;
+  color: #ffd4d4;
+}
+.metaBarra {
+  height: 14px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.metaBarraFill {
+  height: 100%;
+  background: #fff;
+  border-radius: 999px;
+  transition: width 1s ease-out;
+}
+.metaPie {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: #ffd4d4;
+}
+.metaPie strong {
+  color: #fff;
+}
+
+.metaBlanco {
+  background: var(--blanco);
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.metaH3 {
+  font-weight: 800;
+  font-size: 23px;
+  margin: 0 0 8px;
+  color: var(--tinta);
+}
+.metaBlancoP {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--texto-3);
+  margin: 0 0 24px;
+}
+.metaAportes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.metaAporte {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  font-size: 15px;
+  color: #3a3633;
+}
+.metaMonto {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: var(--rojo-suave);
+  color: var(--rojo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.metaCta {
+  margin-top: 28px;
+  font-size: 17px;
+  padding: 16px;
+  border-radius: 13px;
+  box-shadow: none;
+}
+
+@media (max-width: 900px) {
+  .meta {
+    grid-template-columns: 1fr;
+  }
+}

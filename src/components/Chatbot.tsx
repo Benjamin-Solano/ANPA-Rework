@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Chatbot.css';
 
 interface Mensaje {
@@ -37,6 +38,7 @@ const BotIcon = ({ size }: { size: number }) => (
 
 /** Chatbot flotante global: respuestas rápidas que navegan a la sección correspondiente. */
 export default function Chatbot() {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [mensajes, setMensajes] = useState<Mensaje[]>([
     { from: 'bot', text: '¡Hola! Soy el asistente de ANPA. ¿En qué te ayudo? Elegí una opción abajo.' },
@@ -45,7 +47,7 @@ export default function Chatbot() {
   const responder = (r: RespuestaRapida) => {
     setMensajes((m) => [...m, { from: 'user', text: r.label }, { from: 'bot', text: r.reply }]);
     window.setTimeout(() => {
-      window.location.href = r.href;
+      navigate(r.href);
     }, 700);
   };
 

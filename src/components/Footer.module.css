@@ -1,0 +1,96 @@
+.footer {
+  background: var(--tinta-footer);
+  color: var(--footer-texto);
+  font-family: var(--font-body);
+}
+.footerGrid {
+  padding-top: 64px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.4fr;
+  gap: 48px;
+}
+.footerMarca {
+  margin-bottom: 18px;
+}
+.footerDesc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--footer-texto-2);
+  max-width: 300px;
+  margin: 0 0 20px;
+}
+.footerRedes {
+  display: flex;
+  gap: 9px;
+}
+.footerRed {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--footer-chip);
+  color: #bbb3aa;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.footerRed:hover {
+  background: var(--rojo);
+  color: #fff;
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.footerTitulo {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 16px;
+}
+.footerLink {
+  color: var(--footer-texto-2);
+  text-decoration: none;
+  font-size: 14.5px;
+  padding: 6px 0;
+  transition: color 0.15s;
+}
+.footerLink:hover {
+  color: #fff;
+}
+
+.footerBottom {
+  margin-top: 48px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  border-top: 1px solid var(--footer-borde);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--footer-tenue);
+}
+.footerLegal {
+  display: flex;
+  gap: 18px;
+}
+.footerLegal a {
+  color: var(--footer-tenue);
+  text-decoration: none;
+}
+
+/* Footer móvil (§5.1: ≤820px) */
+@media (max-width: 820px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
