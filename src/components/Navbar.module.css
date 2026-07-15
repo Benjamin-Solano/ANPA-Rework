@@ -1,0 +1,183 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--blanco);
+  border-bottom: 1px solid var(--borde-nav);
+  box-shadow: var(--sombra-nav);
+  font-family: var(--font-body);
+}
+.navInner {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--texto-2);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 9px 13px;
+  border-radius: 9px;
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+}
+.navLink:hover {
+  background: #f7f2ec;
+}
+.navLink.activo {
+  color: var(--rojo);
+  background: var(--rojo-suave);
+}
+
+/* Submenú (desktop): hover + focus-within, máximo 2 niveles (§6.1) */
+.tieneSubmenu {
+  position: relative;
+}
+.chevron {
+  margin-left: 3px;
+  transition: transform 0.2s;
+}
+.submenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: var(--blanco);
+  border: 1px solid var(--borde-nav);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  min-width: 248px;
+  display: none;
+}
+/* Puente invisible que cubre el espacio de 6px entre el botón y el menú,
+   evita que el submenú se cierre al mover el cursor hacia las opciones. */
+.submenu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+.tieneSubmenu:hover .submenu,
+.tieneSubmenu:focus-within .submenu {
+  display: block;
+}
+.tieneSubmenu:hover .chevron,
+.tieneSubmenu:focus-within .chevron {
+  transform: rotate(180deg);
+}
+.submenu a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 9px;
+  text-decoration: none;
+  transition: background 0.12s;
+}
+.submenu a:hover {
+  background: #f7f2ec;
+}
+.submenuTitulo {
+  font-weight: 700;
+  color: var(--tinta);
+}
+.submenuDesc {
+  display: block;
+  font-size: 12px;
+  color: var(--tenue);
+}
+
+.navDerecha {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.redes {
+  display: flex;
+  gap: 7px;
+}
+.red {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3ede6;
+  color: var(--texto-3);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.red:hover {
+  background: var(--rojo);
+  color: #fff;
+}
+.navDonar {
+  font-size: 15px;
+  padding: 11px 20px;
+  box-shadow: 0 8px 18px -8px rgba(31, 138, 91, 0.7);
+}
+
+.navMobileBtn {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--tinta);
+}
+
+.navMobilePanel {
+  border-top: 1px solid var(--borde-nav);
+  background: var(--blanco);
+  padding: 12px var(--pad-lat) 22px;
+}
+.mLink {
+  display: block;
+  padding: 13px 4px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--tinta);
+  text-decoration: none;
+  border-bottom: 1px solid #f1ece5;
+}
+.mLinkDonar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--verde);
+  color: #fff;
+  font-weight: 700;
+  padding: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+/* Navbar móvil (§5.1: ≤900px) */
+@media (max-width: 900px) {
+  .navDesktop {
+    display: none !important;
+  }
+  .navMobileBtn {
+    display: block;
+  }
+}
+@media (min-width: 901px) {
+  .navMobilePanel {
+    display: none;
+  }
+}

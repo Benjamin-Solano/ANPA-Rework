@@ -1,0 +1,381 @@
+.cabecera {
+  background: linear-gradient(135deg, var(--rojo), #8e0e22);
+  padding: 56px 0 44px;
+  text-align: center;
+}
+.cabecera-inner {
+  max-width: 700px;
+}
+.cabecera-h1 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 34px;
+  letter-spacing: -0.5px;
+  color: #fff;
+  margin: 0 0 10px;
+}
+.cabecera-p {
+  font-size: 15.5px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 26px;
+}
+.tabs {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  padding: 5px;
+}
+.tab {
+  padding: 9px 22px;
+  border-radius: 24px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+.tab.activo {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--rojo);
+}
+
+.seccion {
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+.h2 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 23px;
+  letter-spacing: -0.3px;
+  color: var(--tinta);
+  margin: 0 0 6px;
+}
+.sub {
+  font-size: 14px;
+  color: var(--texto-3);
+  margin: 0 0 22px;
+}
+
+/* Meta de donación (caso activo) */
+.meta {
+  border-radius: 26px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 26px 60px -24px rgba(0, 0, 0, 0.35);
+  margin-bottom: 56px;
+}
+.meta-rojo {
+  flex: 1.3;
+  min-width: 300px;
+  background: var(--rojo);
+  padding: 36px 34px;
+  color: #fff;
+}
+.meta-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.16);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.meta-h2 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 23px;
+  margin: 0 0 10px;
+  line-height: 1.25;
+}
+.meta-p {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+  margin: 0 0 22px;
+}
+.meta-cifras {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+.meta-goal {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+}
+.meta-barra {
+  height: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+  margin: 14px 0 8px;
+}
+.meta-barra-fill {
+  height: 100%;
+  border-radius: 8px;
+  background: #fff;
+  transition: width 1s ease-out;
+}
+.meta-pie {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.82);
+}
+.meta-blanco {
+  flex: 1;
+  min-width: 280px;
+  background: var(--blanco);
+  padding: 36px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.meta-h3 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--tinta);
+  margin: 0;
+}
+.meta-blanco-p {
+  font-size: 13.5px;
+  color: var(--texto-3);
+  line-height: 1.5;
+  margin: 0;
+}
+.meta-aportes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.meta-aporte {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #4a423c;
+}
+.meta-monto {
+  font-family: var(--font-head);
+  font-weight: 800;
+  color: var(--rojo);
+  font-size: 14px;
+  background: var(--rojo-suave);
+  padding: 6px 12px;
+  border-radius: 9px;
+  flex-shrink: 0;
+}
+.meta-cta {
+  text-align: center;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Transparencia */
+.transparencia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-bottom: 60px;
+}
+.transparencia-card {
+  border-radius: 18px;
+  padding: 24px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-tarjeta);
+}
+.transparencia-valor {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--tinta);
+}
+.transparencia-label {
+  font-size: 12.5px;
+  color: var(--tenue);
+  margin-top: 4px;
+}
+
+/* Métodos de pago */
+.metodos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.metodo-card {
+  border-radius: 16px;
+  padding: 22px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--sombra-tarjeta);
+  transition: transform 0.15s;
+}
+.metodo-card:hover {
+  transform: translateY(-3px);
+}
+.metodo-icono {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--rojo-suave);
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 800;
+  color: var(--rojo);
+  font-size: 13px;
+}
+.metodo-nombre {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--tinta);
+}
+
+/* Donación recurrente */
+.recurrente-caja {
+  background: var(--crema);
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.recurrente-titulo {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--tinta);
+  margin-bottom: 4px;
+}
+.recurrente-desc {
+  font-size: 13px;
+  color: var(--texto-3);
+}
+.switch {
+  width: 52px;
+  height: 30px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.15);
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  border: none;
+  transition: background 0.2s;
+  padding: 0;
+}
+.switch.on {
+  background: var(--verde);
+}
+.switch-knob {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: left 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.switch.on .switch-knob {
+  left: 25px;
+}
+.recurrente-montos {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+.recurrente-monto {
+  padding: 12px 22px;
+  border-radius: 24px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  box-shadow: 0 8px 20px -10px rgba(31, 138, 91, 0.35);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--verde);
+  cursor: pointer;
+}
+
+/* Merch */
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.merch-card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-tarjeta);
+}
+.merch-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: var(--img-fallback);
+}
+.merch-cuerpo {
+  padding: 18px;
+}
+.merch-nombre {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--tinta);
+  margin-bottom: 10px;
+}
+.merch-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.merch-precio {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--rojo);
+}
+.merch-agregar {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: var(--verde);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
+.merch-agregar:hover {
+  background: var(--verde-hover);
+}
+
+@media (max-width: 900px) {
+  .meta {
+    flex-direction: column;
+  }
+}

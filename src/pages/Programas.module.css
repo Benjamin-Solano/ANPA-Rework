@@ -1,0 +1,510 @@
+.cabecera {
+  background: linear-gradient(135deg, var(--rojo), #8e0e22);
+  padding: 52px 0 40px;
+  text-align: center;
+}
+.cabecera-inner {
+  max-width: 700px;
+}
+.cabecera-h1 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 32px;
+  color: #fff;
+  margin: 0 0 10px;
+}
+.cabecera-p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 26px;
+}
+.tabs {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  padding: 5px;
+}
+.tab {
+  padding: 9px 22px;
+  border-radius: 24px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+.tab.activo {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--rojo);
+}
+
+.seccion {
+  padding-top: 48px;
+  padding-bottom: 24px;
+}
+.h2 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--tinta);
+  margin: 0 0 6px;
+}
+.sub {
+  font-size: 14px;
+  color: var(--texto-3);
+  margin: 0 0 20px;
+}
+
+/* Mapa de campañas */
+.campanas-fila {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+.mapa-placeholder {
+  flex: 1.4;
+  min-width: 340px;
+  height: 320px;
+  border-radius: 14px;
+  background: repeating-linear-gradient(45deg, #ede7e2, #ede7e2 14px, #e2d9d1 14px, #e2d9d1 28px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--tenue);
+  text-align: center;
+}
+.campanas-lista {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.campana-item {
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--blanco);
+  box-shadow: var(--sombra-tarjeta);
+}
+.campana-zona {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--tinta);
+}
+.campana-fecha {
+  font-size: 12px;
+  color: var(--texto-3);
+}
+.campana-cupos {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--verde);
+  background: var(--verde-suave);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* Sistema de citas */
+.citas-caja {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+  background: var(--crema);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 30px;
+}
+.citas-form {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.campo-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--texto-3);
+  margin-bottom: 6px;
+}
+.citas-opciones {
+  display: flex;
+  gap: 8px;
+}
+.citas-opcion {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid var(--borde);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-3);
+  cursor: pointer;
+}
+.citas-opcion.activa {
+  border-color: var(--rojo);
+  background: var(--rojo-suave);
+  color: var(--rojo);
+}
+.campo-valor {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  font-size: 13px;
+  color: var(--tinta);
+  background: var(--blanco);
+}
+.citas-btn {
+  padding: 13px;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-top: 6px;
+  box-shadow: none;
+}
+.citas-beneficios {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #4a423c;
+  line-height: 1.7;
+}
+
+/* Precios */
+.precios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 52px;
+}
+.precio-card {
+  border-radius: 16px;
+  padding: 22px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-tarjeta);
+}
+.precio-tipo {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--tinta);
+  margin-bottom: 4px;
+}
+.precio-monto {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--rojo);
+  margin-bottom: 10px;
+}
+.precio-requisitos {
+  font-size: 12.5px;
+  color: var(--texto-3);
+  line-height: 1.6;
+}
+
+/* Acordeones (details/summary nativos) */
+.acordeon {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 52px;
+}
+.detalle {
+  border-radius: 16px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-tarjeta);
+  overflow: hidden;
+}
+.detalle summary {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--tinta);
+  list-style: none;
+}
+.detalle summary::-webkit-details-marker {
+  display: none;
+}
+.detalle summary::after {
+  content: '›';
+  margin-left: auto;
+  font-size: 20px;
+  color: var(--tenue);
+  transition: transform 0.2s;
+}
+.detalle[open] summary::after {
+  transform: rotate(90deg);
+}
+.detalle-letra {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--rojo-suave);
+  color: var(--rojo);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.detalle-cuerpo {
+  padding: 0 20px 18px;
+  font-size: 13.5px;
+  color: #4a423c;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.detalle-cuerpo-indent {
+  padding-left: 66px;
+}
+
+/* Denuncia */
+.denuncia-fila {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+.denuncia-form-wrap {
+  flex: 1;
+  min-width: 300px;
+}
+.denuncia-form {
+  background: var(--crema);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.campo-select,
+.campo-adjunto {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  font-size: 13px;
+  background: var(--blanco);
+  color: var(--tinta);
+  font-family: var(--font-body);
+}
+.campo-adjunto {
+  border-style: dashed;
+  text-align: center;
+  color: var(--tenue);
+  cursor: pointer;
+}
+.denuncia-enviar {
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--rojo);
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  margin-top: 6px;
+  font-family: var(--font-body);
+}
+.denuncia-enviar:hover {
+  background: var(--rojo-hover);
+}
+.pasos-wrap {
+  flex: 1;
+  min-width: 260px;
+}
+.pasos-titulo {
+  margin: 36px 0 14px;
+}
+.pasos-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  counter-reset: paso;
+}
+.pasos-lista li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  color: #4a423c;
+  line-height: 1.5;
+  counter-increment: paso;
+}
+.pasos-lista li::before {
+  content: counter(paso);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--rojo);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Vacunas */
+.vacunas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 52px;
+}
+.vacuna-card {
+  border-radius: 16px;
+  padding: 20px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-tarjeta);
+}
+.vacuna-edad {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--rojo);
+  margin-bottom: 8px;
+}
+.vacuna-info {
+  font-size: 13px;
+  color: #4a423c;
+  line-height: 1.7;
+}
+
+/* Veterinarias */
+.vet-filtros {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.vet-filtro {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--crema);
+  border: 1px solid var(--borde);
+  color: var(--texto-2);
+  font-family: var(--font-body);
+}
+.vet-filtro.activo {
+  background: var(--rojo);
+  border-color: var(--rojo);
+  color: #fff;
+}
+.vets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 52px;
+}
+.vet-card {
+  border-radius: 16px;
+  padding: 20px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-tarjeta);
+}
+.vet-cabeza {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  gap: 8px;
+}
+.vet-nombre {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--tinta);
+}
+.vet-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--rojo);
+  background: var(--rojo-suave);
+  padding: 3px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.vet-zona {
+  font-size: 12.5px;
+  color: var(--texto-3);
+  margin-bottom: 4px;
+}
+.vet-rating {
+  font-size: 12.5px;
+  color: #c99a3e;
+  font-weight: 700;
+}
+
+/* Panfleto teaser */
+.panfleto-teaser {
+  background: linear-gradient(135deg, #f2e9d2, #ead9af);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 52px;
+}
+.panfleto-teaser-titulo {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--tinta);
+  margin-bottom: 6px;
+}
+.panfleto-teaser-desc {
+  font-size: 13.5px;
+  color: #5a4e3c;
+  line-height: 1.6;
+  max-width: 400px;
+}
+.panfleto-teaser-cta {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: var(--tinta);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .precios-grid,
+  .vacunas-grid,
+  .vets-grid {
+    grid-template-columns: 1fr;
+  }
+}
